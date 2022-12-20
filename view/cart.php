@@ -10,18 +10,18 @@ if (isset($_POST['addcart'])) {
     $ten = $_POST['tensp'];
     $gia = $_POST['gia'];
     $soluong = $_POST['soluong'];
-    
 
-    $fl=0;
+
+    $fl = 0;
     for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][1]==$ten){
-            $fl=1;
-            $slnew = $soluong+$_SESSION['giohang'][$i][3];
-            $_SESSION['giohang'][$i][3]=$slnew;
+        if ($_SESSION['giohang'][$i][1] == $ten) {
+            $fl = 1;
+            $slnew = $soluong + $_SESSION['giohang'][$i][3];
+            $_SESSION['giohang'][$i][3] = $slnew;
             break;
         }
     }
-    if($fl==0){
+    if ($fl == 0) {
         $sp = [$hinh, $ten, $gia, $soluong];
         $_SESSION['giohang'][] = $sp;
     }
@@ -34,7 +34,7 @@ function showcart()
         for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
             $tt = $_SESSION['giohang'][$i][2] * $_SESSION['giohang'][$i][3];
             $tong += $tt;
-           
+
             echo '
                         <tr>
                             <td>' . ($i + 1) . '</td>
@@ -43,7 +43,7 @@ function showcart()
                             <td><span>' . $_SESSION['giohang'][$i][2] . ' VNĐ</span></td>
                             <td>
                                 <form action="">
-                                    <input type="number" value="'.$_SESSION['giohang'][$i][3].'" name="soluong">
+                                    <input type="number" value="' . $_SESSION['giohang'][$i][3] . '" name="soluong">
                                 </form>
                             </td>
                         <td><span>' . $tt . ' VNĐ</span></td>
@@ -74,7 +74,7 @@ function showcart_mobile()
                     <p>' . $_SESSION['giohang'][$i][1] . '</p>
                     <span>' . $_SESSION['giohang'][$i][2] . ' VNĐ</span> 
                         <form action="">
-                            <input type="number" value="'.$_SESSION['giohang'][$i][3].'" name="soluong">
+                            <input type="number" value="' . $_SESSION['giohang'][$i][3] . '" name="soluong">
                         </form>
                     <td><a href="../controller/index.php?act=cart&delid=' . $i . '"><i class="fa-solid fa-trash"></i> </a></td>
                 </div>  

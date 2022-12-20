@@ -1,15 +1,16 @@
 
 
 <?php
-include_once "../model/config.php"; 
+// Trang này tương tự cấu trúc gọi như trang index, chỉ khác đường dẫn đến thư mục view
+include_once "../model/config.php";
 include_once "../model/danhmuc.php";
 include_once "../model/sanpham.php";
 include_once "../model/binhluan.php";
 include_once "../model/user.php";
 include_once "../model/admin.php";
-
-if(isset($_SESSION['idAdmin'])){
-            include "../viewAdmin/header.php"; 
+// Kiểm tra phiên có được gán 1 khoá tên là idAdmin hay không
+if (isset($_SESSION['idAdmin'])) {
+    include "../viewAdmin/header.php";
     if (isset($_GET['act'])) {
 
 
@@ -23,8 +24,8 @@ if(isset($_SESSION['idAdmin'])){
             case 'themdanhmuc':
                 include "../viewAdmin/themdanhmuc.php";
                 break;
-    
-    
+
+
             case 'sanpham':
                 include "../viewAdmin/sanpham.php";
                 break;
@@ -34,8 +35,8 @@ if(isset($_SESSION['idAdmin'])){
             case 'themsanpham':
                 include "../viewAdmin/themsp.php";
                 break;
-    
-    
+
+
             case 'userAd':
                 include "../viewAdmin/userAd.php";
                 break;
@@ -48,8 +49,8 @@ if(isset($_SESSION['idAdmin'])){
             case 'themuser':
                 include "../viewAdmin/themuser.php";
                 break;
-    
-    
+
+
             case 'binhluan':
                 include "../viewAdmin/binhluan.php";
                 break;
@@ -61,8 +62,8 @@ if(isset($_SESSION['idAdmin'])){
     } else {
         include "../viewAdmin/admin.php";
     }
-    include "../viewAdmin/footer.php"; 
-}else{
+    include "../viewAdmin/footer.php";
+} else {
     include "../view/dangnhapadmin.php";
 }
 ?>
