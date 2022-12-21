@@ -41,6 +41,7 @@
                      <input type="hidden" name="hinh" value="' . $hinh . '"/>
                      <input type="hidden" name="tensp" value="' . $tensp . '"/>
                      <input type="hidden" name="gia" value="' . $gia . '"/>
+                     <input type="hidden" name="soluong" value="1" tabindex="0">
                          <div class="buy">
                              <button type="submit" name="addcart">Mua ngay</button>
                              <input type="submit" value="Cho vào giỏ" name="addcart">
