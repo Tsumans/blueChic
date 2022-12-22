@@ -42,24 +42,15 @@ if (isset($_POST["dk"])) {
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
 
-        //code đăng ký có ảnh avata
-        // $avata = basename($_FILES['hinh']['name']);
-        // $target = "../view/images/";
-        // $target_file = $target . $avata;
 
         $user_query = regiter_query($user);
         extract($user_query);
 
-        if ($user == $user_query) {
+        if ($user = $user_query) {
             echo "<script>alert('Username đã tồn tại')</script>";
         } else if ($password != $repassword) {
             echo "<script>alert('Password không trùng khớp')</script>";
         } else {
-
-            //Code đăng ký có ảnh avata
-            // regiter_add($user,$password,$name,$email,$avata);
-            // move_uploaded_file($_FILES['hinh']['tmp_name'],  $target_file);
-
             regiter_add($user, $password, $name, $email, $repassword);
             echo "<script>alert('Đăng ký tài khoản thành công')</script>";
         }

@@ -96,8 +96,8 @@
         </div>
     </div>
     <div class="bane">
-        <img src="../view/images/Banner/banner1.jpg" alt="">
-        <img src="../view/images/Banner/banner2.jpg" alt="">
+        <img src="../view/images/Banner/banner1.jpg" alt="banner1.jpg">
+        <img src="../view/images/Banner/banner2.jpg" alt="banner2.jpg">
     </div>
     <!-- <div class="tintuc">
         <div class="tille">

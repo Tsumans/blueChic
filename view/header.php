@@ -52,7 +52,7 @@
                                     //     <a href="../controller/index.php?act=register">ĐĂNG KÝ</a>';
 
                                     echo '
-                                        <a href="../controller/index.php?act=login" class="dangnhap">
+                                        <a href="../controller/index.php?act=login" class="dangnhap">   
                                         <i class="fa-solid fa-user"></i>
                                         </a><span></span>
                                         <a href="../controller/index.php?act=register">ĐĂNG KÝ</a>';
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="middle">
-                <div class="anh"><a href="../controller/index.php"> <img src="../view/images/logo1.png" alt=""></a>
+                <div class="anh"><a href="../controller/index.php"> <img src="../view/images/Laptop Luxury-logos_white.png" alt=""></a>
                 </div>
                 <form action="../controller/index.php?act=seach" method="POST">
                     <input type="text" name="filter" placeholder="Tìm kiếm sản phẩm...">

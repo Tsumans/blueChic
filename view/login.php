@@ -1,25 +1,21 @@
 <link rel="stylesheet" href="../view/css/lo_re.css">
 <?php
-if (isset($_POST['login'])) 
-{
+if (isset($_POST['login'])) {
     $username = $_POST['username'];
-    $password = $_POST['password'];  
-    if ($username !=0 || $password !=0) {
-        $login=login($username);
-        foreach($login as $row){
+    $password = $_POST['password'];
+    if ($username != 0 || $password != 0) {
+        $login = login($username);
+        foreach ($login as $row) {
             extract($row);
-            $_SESSION['name'] = $name ;
+            $_SESSION['name'] = $name;
             $_SESSION['username'] = $username;
             $_SESSION['id'] = $id;
             $_SESSION['email'] = $email;
             // $_SESSION['avata'] = $avata;
             $_SESSION['password'] = $password;
         }
-            echo "<script>alert('Xin chào " . $_SESSION['name'] . ". Bạn đã đăng nhập thành công.')</script>";
-            
-            
-        
-    }else {
+        echo "<script>alert('Xin chào " . $_SESSION['name'] . ". Bạn đã đăng nhập thành công.')</script>";
+    } else {
         echo "<script>alert('Vui lòng nhập đầy đủ thông tin')</script>";
     }
 }
@@ -28,8 +24,8 @@ if (isset($_POST['login']))
 <div class="main">
 
     <?php
-         if (isset($_SESSION['name'])) {
-            echo '  
+    if (isset($_SESSION['name'])) {
+        echo '  
             <div class="userlogin">
             <h2>Xin Chào: <span>' . $_SESSION['name'] . '</span></h2>
             <table class="bang">
@@ -41,7 +37,7 @@ if (isset($_POST['login']))
                 </tr>
                 <tr>
                     <td>' . $_SESSION['username'] . '</td>
-                    <td><input type=hidden value=' .$_SESSION['password'] . ' /></td>
+                    <td><input type=hidden value=' . $_SESSION['password'] . ' /></td>
                 </tr>
                 <tr>
                 <td class="sub"><a href="index.php?act=suauser">Sửa</a></td>
@@ -49,8 +45,8 @@ if (isset($_POST['login']))
                 </tr>
             </table> 
             </div>';
-        } else {
-            echo '<div class="dangky">
+    } else {
+        echo '<div class="dangky">
             <form action="index.php?act=login" method="POST">
                 <h2>ĐĂNG NHẬP</h2>
                 <input type="text" placeholder="User name" name="username"><br>
@@ -67,7 +63,7 @@ if (isset($_POST['login']))
                 </div>
             </form>
         </div>';
-        }
+    }
     ?>
 
 
