@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiệp Trung Thu ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+background:linear-gradient(to bottom,#061539,#102d70,#233b7a);
+color:white;
+}
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.2;
+}
+}
+
+.moon{
+position:absolute;
+top:60px;
+left:50%;
+transform:translateX(-50%);
+width:180px;
+height:180px;
+border-radius:50%;
+background:#ffe89a;
+box-shadow:0 0 80px #ffd34d;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+font-weight:bold;
+color:#8a5a00;
+cursor:pointer;
+z-index:10;
+}
+
+.card{
+position:absolute;
+left:50%;
+top:55%;
+transform:translate(-50%,-50%);
+width:92%;
+max-width:420px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:20px;
+display:none;
+z-index:20;
+box-shadow:0 0 20px rgba(255,255,255,.2);
+}
+
+.album{
+width:100%;
+height:320px;
+overflow:hidden;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+.album img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+}
+
+.title{
+text-align:center;
+font-size:30px;
+margin-bottom:10px;
+color:#ffd86d;
+}
+
+.to{
+text-align:center;
+font-size:22px;
+margin-bottom:15px;
+}
+
+.message{
+line-height:1.8;
+font-size:17px;
+text-align:center;
+}
+
+.sign{
+margin-top:20px;
+text-align:right;
+color:#ffd86d;
+font-weight:bold;
+}
+
+.lantern{
+position:absolute;
+bottom:-100px;
+font-size:50px;
+animation:fly linear infinite;
+z-index:1;
+}
+
+@keyframes fly{
+from{
+transform:translateY(0);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+to{
+transform:translateY(-130vh);
+opacity:0;
+}
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+color:#ff6ea9;
+font-size:22px;
+animation:heartFly linear forwards;
+}
+
+@keyframes heartFly{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+.music{
+position:fixed;
+bottom:15px;
+right:15px;
+background:white;
+border-radius:30px;
+padding:10px 15px;
+font-size:14px;
+color:black;
+z-index:99;
+}
+
+.note{
+margin-top:15px;
+font-size:13px;
+text-align:center;
+color:#ccc;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div class="moon" onclick="openCard()">
+🌕<br>
+Nhấn vào<br>
+Mặt Trăng
+</div>
+
+<div class="card" id="card">
+
+<div class="album">
+https://drive.google.com/uc?export=view&id=1pSnscZyv7hSHMEBklPS75Y4fS9Mhjouu
+</div>
+
+<div class="title">
+🎑 Trung Thu 🎑
+</div>
+
+<div class="to">
+Gửi Bé yêu ❤️
+</div>
+
+<div class="message">
+Gửi em, người con gái anh thích ❤️
+<br><br>
+Cảm ơn em vì đã cho anh cơ hội được theo đuổi em.
+<br><br>
+Anh rất trân trọng những khoảnh khắc được trò chuyện, được quan tâm em mỗi ngày.
+<br><br>
+Và anh cũng hy vọng rằng, người đồng hành cùng em trong quãng đường còn lại sẽ là anh nhé ❤️
+<br><br>
+Chúc em có một mùa Trung Thu thật vui vẻ, bình an và luôn mỉm cười thật nhiều dưới ánh trăng đêm rằm 🌕🏮✨
+</div>
+
+<div class="sign">
+Anh bé ❤️
+</div>
+
+<div class="note">
+Bấm nút phát nhạc bên dưới 🎵
+</div>
+
+</div>
+
+<div class="music">
+🎵 Nhạc:
+<a href="https://youtu.be/\_8r2T85vVz0" target="_blank">
+Mở YouTube
+</a>
+</div>
+
+<script>
+
+const photos=[
+"https://drive.google.com/uc?export=view&id=1pSnscZyv7hSHMEBklPS75Y4fS9Mhjouu",
+"https://drive.google.com/uc?export=view&id=1qy7JxrMsBkM4zz-4Rki-Yju0rhMlmXVM"
+];
+
+let current=0;
+
+function nextPhoto(){
+current=(current+1)%photos.length;
+document.getElementById("photo").src=photos[current];
+}
+
+setInterval(nextPhoto,4000);
+
+function openCard(){
+document.getElementById("card").style.display="block";
+document.querySelector(".moon").innerHTML="🌕";
+}
+
+for(let i=0;i<120;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.width=star.style.height=(Math.random()*3+1)+"px";
+star.style.animationDelay=Math.random()*2+"s";
+document.getElementById("stars").appendChild(star);
+}
+
+function createLantern(){
+let x=document.createElement("div");
+x.className="lantern";
+x.innerHTML="🏮";
+x.style.left=Math.random()*100+"vw";
+x.style.animationDuration=(8+Math.random()*6)+"s";
+document.body.appendChild(x);
+
+setTimeout(()=>{
+x.remove();
+},15000);
+}
+
+setInterval(createLantern,1200);
+
+function createHeart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},10000);
+}
+
+setInterval(createHeart,1000);
+
+</script>
+
+</body>
+</html>
+
