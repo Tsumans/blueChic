@@ -2,182 +2,283 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thiệp Trung Thu ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Đêm Trăng Tháng Tám</title>
+
+https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap
 
 <style>
+
+:root{
+--gold:#ffd76d;
+--glass:rgba(255,255,255,.12);
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:'Be Vietnam Pro',sans-serif;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
-overflow:hidden;
+background:
+radial-gradient(circle at top,#2e4aa6 0%,#10254b 35%,#06132f 100%);
 height:100vh;
-background:linear-gradient(to bottom,#061539,#102d70,#233b7a);
+overflow:hidden;
 color:white;
 }
 
 #stars{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
+inset:0;
+z-index:1;
 }
 
 .star{
 position:absolute;
 background:white;
 border-radius:50%;
-animation:twinkle 2s infinite;
+animation:twinkle 3s infinite;
 }
 
 @keyframes twinkle{
 50%{
 opacity:.2;
+transform:scale(.7);
 }
 }
 
+.flash{
+position:fixed;
+inset:0;
+background:white;
+opacity:0;
+pointer-events:none;
+z-index:99;
+}
+
+.flash.active{
+animation:flashLight 1.3s ease;
+}
+
+@keyframes flashLight{
+0%{opacity:0;}
+20%{opacity:.9;}
+100%{opacity:0;}
+}
+
+.moon-screen{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:50;
+transition:1.6s cubic-bezier(.22,1,.36,1);
+}
+
+.moon-screen.hide{
+opacity:0;
+transform:scale(5);
+filter:blur(30px);
+}
+
 .moon{
-position:absolute;
-top:60px;
-left:50%;
-transform:translateX(-50%);
-width:180px;
-height:180px;
+width:240px;
+height:240px;
 border-radius:50%;
-background:#ffe89a;
-box-shadow:0 0 80px #ffd34d;
+background:#ffe8a4;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-font-weight:bold;
-color:#8a5a00;
+font-weight:700;
+font-size:24px;
+color:#8f5c00;
 cursor:pointer;
+box-shadow:
+0 0 60px #ffe27d,
+0 0 120px #ffd85c,
+0 0 180px rgba(255,216,92,.6);
+animation:floatMoon 4s ease-in-out infinite;
+transition:.8s;
+}
+
+.moon.opening{
+transform:scale(1.25);
+box-shadow:
+0 0 120px #fff6c8,
+0 0 200px #ffd76d,
+0 0 350px #ffd76d;
+}
+
+@keyframes floatMoon{
+50%{
+transform:translateY(-12px);
+}
+}
+
+.main{
+position:fixed;
+inset:0;
+overflow-y:auto;
+padding:20px;
+opacity:0;
+transform:translateY(70px) scale(.96);
+pointer-events:none;
+transition:1.4s cubic-bezier(.22,1,.36,1);
 z-index:10;
 }
 
-.card{
-position:absolute;
-left:50%;
-top:55%;
-transform:translate(-50%,-50%);
-width:92%;
-max-width:420px;
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(10px);
-border-radius:25px;
-padding:20px;
-display:none;
-z-index:20;
-box-shadow:0 0 20px rgba(255,255,255,.2);
+.main.show{
+opacity:1;
+transform:translateY(0) scale(1);
+pointer-events:auto;
+}
+
+.container{
+max-width:430px;
+margin:auto;
+padding-bottom:120px;
+}
+
+.hero{
+text-align:center;
+margin-top:10px;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:36px;
+color:var(--gold);
+margin-bottom:10px;
+text-shadow:0 0 15px rgba(255,215,109,.4);
+}
+
+.hero p{
+opacity:.8;
+font-size:14px;
 }
 
 .album{
-width:100%;
-height:320px;
+position:relative;
+height:520px;
+border-radius:32px;
 overflow:hidden;
-border-radius:20px;
-margin-bottom:15px;
+box-shadow:
+0 20px 50px rgba(0,0,0,.35),
+0 0 30px rgba(255,215,109,.2);
+margin-bottom:24px;
 }
 
 .album img{
+position:absolute;
+inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
-border-radius:20px;
+opacity:0;
+transform:scale(1.08);
+transition:1.5s ease;
 }
 
-.title{
+.album img.active{
+opacity:1;
+transform:scale(1);
+}
+
+.glass{
+background:var(--glass);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:30px;
+padding:28px;
+box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1.2s ease;
+}
+
+.show .reveal{
+opacity:1;
+transform:translateY(0);
+transition-delay:.8s;
+}
+
+.glass h2{
 text-align:center;
-font-size:30px;
-margin-bottom:10px;
-color:#ffd86d;
+margin-bottom:18px;
+color:var(--gold);
 }
 
-.to{
-text-align:center;
-font-size:22px;
-margin-bottom:15px;
-}
-
-.message{
-line-height:1.8;
-font-size:17px;
+.glass p{
+line-height:1.95;
+font-size:16px;
 text-align:center;
 }
 
-.sign{
-margin-top:20px;
-text-align:right;
-color:#ffd86d;
-font-weight:bold;
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:120;
+}
+
+.music a{
+text-decoration:none;
+background:white;
+padding:13px 18px;
+border-radius:999px;
+color:#111;
+font-weight:700;
+font-size:14px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.footer{
+margin-top:22px;
+text-align:center;
+font-size:13px;
+color:#ffd76d;
 }
 
 .lantern{
-position:absolute;
+position:fixed;
 bottom:-100px;
-font-size:50px;
-animation:fly linear infinite;
-z-index:1;
+font-size:48px;
+animation:fly linear forwards;
+z-index:2;
+pointer-events:none;
 }
 
 @keyframes fly{
-from{
-transform:translateY(0);
-opacity:0;
-}
-10%{
-opacity:1;
-}
-to{
-transform:translateY(-130vh);
-opacity:0;
-}
-}
-
-.heart{
-position:absolute;
-bottom:-50px;
-color:#ff6ea9;
-font-size:22px;
-animation:heartFly linear forwards;
-}
-
-@keyframes heartFly{
-from{
-transform:translateY(0);
-opacity:1;
-}
 to{
 transform:translateY(-120vh);
 opacity:0;
 }
 }
 
-.music{
+.heart{
 position:fixed;
-bottom:15px;
-right:15px;
-background:white;
-border-radius:30px;
-padding:10px 15px;
-font-size:14px;
-color:black;
-z-index:99;
+bottom:-50px;
+font-size:22px;
+animation:heartFly linear forwards;
+pointer-events:none;
+z-index:2;
 }
 
-.note{
-margin-top:15px;
-font-size:13px;
-text-align:center;
-color:#ccc;
+@keyframes heartFly{
+to{
+transform:translateY(-120vh);
+opacity:0;
 }
+}
+
 </style>
 </head>
 
@@ -185,118 +286,188 @@ color:#ccc;
 
 <div id="stars"></div>
 
-<div class="moon" onclick="openCard()">
+<div class="flash" id="flash"></div>
+
+<div class="moon-screen" id="moonScreen">
+<div class="moon" id="moon" onclick="openCard()">
 🌕<br>
-Nhấn vào<br>
-Mặt Trăng
+Chạm để mở
+</div>
 </div>
 
-<div class="card" id="card">
+<div class="main" id="main">
+
+<div class="container">
+
+<div class="hero">
+<h1>🎑 Đêm Trăng 🎑</h1>
+<p>Ánh trăng · Sao trời · Kỷ niệm đẹp</p>
+</div>
 
 <div class="album">
-https://drive.google.com/uc?export=view&id=1pSnscZyv7hSHMEBklPS75Y4fS9Mhjouu
+
+https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200
+
+https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200
+
+https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200
+
 </div>
 
-<div class="title">
-🎑 Trung Thu 🎑
+<div class="glass reveal">
+
+<h2>🌙 Lời Chúc 🌙</h2>
+
+<p>
+Chúc bạn có một mùa Trung Thu thật vui vẻ,
+ngập tràn tiếng cười và những khoảnh khắc đáng nhớ.
+</p>
+
+<br>
+
+<p>
+Mong ánh trăng đêm rằm sẽ mang đến thật nhiều
+niềm vui, sự bình an và những điều tốt đẹp nhất.
+</p>
+
+<br>
+
+<p>
+Hãy dành thời gian tận hưởng những điều giản dị,
+gặp gỡ những người thân yêu và lưu giữ thật nhiều kỷ niệm đẹp.
+🏮✨
+</p>
+
 </div>
 
-<div class="to">
-Gửi Bé yêu ❤️
+<div class="footer">
+🌕 Chúc Mừng Trung Thu 🌕
 </div>
 
-<div class="message">
-Gửi em, người con gái anh thích ❤️
-<br><br>
-Cảm ơn em vì đã cho anh cơ hội được theo đuổi em.
-<br><br>
-Anh rất trân trọng những khoảnh khắc được trò chuyện, được quan tâm em mỗi ngày.
-<br><br>
-Và anh cũng hy vọng rằng, người đồng hành cùng em trong quãng đường còn lại sẽ là anh nhé ❤️
-<br><br>
-Chúc em có một mùa Trung Thu thật vui vẻ, bình an và luôn mỉm cười thật nhiều dưới ánh trăng đêm rằm 🌕🏮✨
-</div>
-
-<div class="sign">
-Anh bé ❤️
-</div>
-
-<div class="note">
-Bấm nút phát nhạc bên dưới 🎵
 </div>
 
 </div>
 
 <div class="music">
-🎵 Nhạc:
-<a href="https://youtu.be/\_8r2T85vVz0" target="_blank">
-Mở YouTube
+<a target="_blank" href="https://youtu.be/\_8r2T85vVz0">
+🎵 Nhạc
 </a>
 </div>
 
 <script>
 
-const photos=[
-"https://drive.google.com/uc?export=view&id=1pSnscZyv7hSHMEBklPS75Y4fS9Mhjouu",
-"https://drive.google.com/uc?export=view&id=1qy7JxrMsBkM4zz-4Rki-Yju0rhMlmXVM"
-];
+function openCard(){
+
+const moon=document.getElementById('moon');
+const moonScreen=document.getElementById('moonScreen');
+const flash=document.getElementById('flash');
+const main=document.getElementById('main');
+
+moon.classList.add('opening');
+flash.classList.add('active');
+
+setTimeout(()=>{
+moonScreen.classList.add('hide');
+},400);
+
+setTimeout(()=>{
+main.classList.add('show');
+},900);
+
+setTimeout(()=>{
+moonScreen.remove();
+},2000);
+
+}
+
+/* stars */
+
+const stars=document.getElementById('stars');
+
+for(let i=0;i<150;i++){
+
+const star=document.createElement('div');
+
+star.className='star';
+
+const size=Math.random()*3+1;
+
+star.style.width=size+'px';
+star.style.height=size+'px';
+
+star.style.left=Math.random()*100+'%';
+star.style.top=Math.random()*100+'%';
+
+star.style.animationDelay=Math.random()*3+'s';
+
+stars.appendChild(star);
+}
+
+/* slider */
+
+const slides=document.querySelectorAll('.album img');
 
 let current=0;
 
-function nextPhoto(){
-current=(current+1)%photos.length;
-document.getElementById("photo").src=photos[current];
-}
+setInterval(()=>{
 
-setInterval(nextPhoto,4000);
+slides[current].classList.remove('active');
 
-function openCard(){
-document.getElementById("card").style.display="block";
-document.querySelector(".moon").innerHTML="🌕";
-}
+current=(current+1)%slides.length;
 
-for(let i=0;i<120;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"%";
-star.style.top=Math.random()*100+"%";
-star.style.width=star.style.height=(Math.random()*3+1)+"px";
-star.style.animationDelay=Math.random()*2+"s";
-document.getElementById("stars").appendChild(star);
-}
+slides[current].classList.add('active');
 
-function createLantern(){
-let x=document.createElement("div");
-x.className="lantern";
-x.innerHTML="🏮";
-x.style.left=Math.random()*100+"vw";
-x.style.animationDuration=(8+Math.random()*6)+"s";
-document.body.appendChild(x);
+},4500);
+
+/* lantern */
+
+function lantern(){
+
+const e=document.createElement('div');
+
+e.className='lantern';
+
+e.innerHTML='🏮';
+
+e.style.left=Math.random()*100+'vw';
+
+e.style.animationDuration=
+(8+Math.random()*5)+'s';
+
+document.body.appendChild(e);
 
 setTimeout(()=>{
-x.remove();
+e.remove();
 },15000);
 }
 
-setInterval(createLantern,1200);
+setInterval(lantern,1300);
 
-function createHeart(){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(h);
+/* heart */
+
+function heart(){
+
+const e=document.createElement('div');
+
+e.className='heart';
+
+e.innerHTML='❤️';
+
+e.style.left=Math.random()*100+'vw';
+
+e.style.animationDuration=
+(5+Math.random()*4)+'s';
+
+document.body.appendChild(e);
 
 setTimeout(()=>{
-h.remove();
-},10000);
+e.remove();
+},9000);
 }
 
-setInterval(createHeart,1000);
+setInterval(heart,1200);
 
 </script>
 
 </body>
 </html>
-
